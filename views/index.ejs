@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Hello!</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+        <style>
+            .container{
+                width: 600px;
+                margin: 0 auto;
+            }
+            span{
+                margin-left: 200px !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h3>Here are all the Mongooses!</h3>
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <% for(var i in data) { %>
+                    <tr>
+                        <td>Name: <%= data[i].name %> </td>
+                        <td>Age: <%= data[i].age %> </td>
+                        <td>
+                            <a href="/edit/<%=data[0]._id %>">Edit!</a>
+                            <form action="/mongoose/destroy/<%=data[i]._id %>" method="post">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <a href="/mongoose/new">Create a Mongoose!</a>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+
